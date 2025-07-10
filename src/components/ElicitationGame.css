@@ -1,0 +1,355 @@
+.elicitation-game-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-container {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-container .container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.question-context {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-md);
+}
+
+.chat-interface {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.message-history {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-md) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.empty-chat {
+  text-align: center;
+  opacity: 0.7;
+  margin: auto;
+}
+
+.message {
+  display: flex;
+  max-width: 70%;
+}
+
+.message.user {
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.message.assistant {
+  align-self: flex-start;
+}
+
+.message.system {
+  align-self: center;
+  max-width: 90%;
+  opacity: 0.7;
+}
+
+.message-content {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background: transparent;
+  line-height: 1.5;
+}
+
+.message.user .message-content {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.message-input-form {
+  display: flex;
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.message-input-form input {
+  flex: 1;
+}
+
+.message-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: var(--spacing-xs);
+}
+
+.answer-container {
+  height: 10%;
+  min-height: 80px;
+}
+
+.answer-content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  height: 100%;
+}
+
+.answer-label {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.text-answer {
+  flex: 1;
+  max-width: 400px;
+}
+
+.question-item.completed {
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* Re-use styles from DetectionGame.css */
+.progress-section {
+  padding: var(--spacing-md);
+}
+
+.game-content {
+  flex: 1;
+  display: flex;
+  gap: var(--spacing-md);
+  padding: 0 var(--spacing-md) var(--spacing-md);
+  height: calc(100vh - 100px);
+}
+
+.question-sidebar {
+  width: 25%;
+  min-width: 200px;
+}
+
+.question-sidebar .container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.question-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.question-item {
+  padding: var(--spacing-sm) var(--spacing-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: var(--border-radius);
+}
+
+.question-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.question-item.active {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.radio-group-horizontal {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.submit-btn {
+  margin-left: auto;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .game-content {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .question-sidebar {
+    width: 100%;
+    max-height: 200px;
+  }
+  
+  .question-list {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-sm);
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  
+  .answer-content {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-md);
+  }
+  
+  .message {
+    max-width: 85%;
+  }
+}
+
+/* Markdown styling for chat messages */
+.message-content {
+  /* Basic markdown elements */
+}
+
+.message-content p {
+  margin: 0 0 0.5em 0;
+}
+
+.message-content p:last-child {
+  margin-bottom: 0;
+}
+
+.message-content strong {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.message-content em {
+  font-style: italic;
+}
+
+.message-content code {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: 'Monaco', 'Consolas', monospace;
+  font-size: 0.9em;
+  color: #F28FC9; /* Pink color matching progress bar */
+}
+
+/* Pre blocks are now handled by syntax highlighter */
+.message-content pre {
+  margin: 0.5em 0;
+}
+
+/* Override syntax highlighter container styles if needed */
+.message-content pre > div {
+  background-color: #1a1a1a !important; /* Dark gray background - distinct from border */
+  border: 1px solid #ffffff !important; /* White border to match app theme */
+}
+
+/* Ensure text in code blocks has good contrast */
+.message-content pre > div > code {
+  background-color: transparent !important;
+}
+
+.message-content ul, .message-content ol {
+  margin: 0.5em 0;
+  padding-left: 1.5em;
+}
+
+.message-content li {
+  margin: 0.25em 0;
+}
+
+.message-content blockquote {
+  border-left: 3px solid var(--color-border);
+  padding-left: 1em;
+  margin: 0.5em 0;
+  opacity: 0.9;
+}
+
+.message-content h1, .message-content h2, .message-content h3,
+.message-content h4, .message-content h5, .message-content h6 {
+  margin: 0.5em 0;
+  font-weight: 600;
+}
+
+.message-content hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 1em 0;
+}
+
+.message-content a {
+  color: #4a9eff;
+  text-decoration: none;
+}
+
+.message-content a:hover {
+  text-decoration: underline;
+}
+
+/* Context Reset Separator */
+.context-reset-separator {
+  margin: 1em 0;
+  text-align: center;
+}
+
+.reset-line {
+  width: 100%;
+  height: 1px;
+  background-color: #ffffff;
+  margin-bottom: 0.5em;
+}
+
+.reset-text {
+  font-size: 0.9em;
+  color: #ffffff;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* Answer Buttons */
+.answer-buttons {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.answer-buttons .submit-btn,
+.answer-buttons .reset-context-btn {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.reset-context-btn {
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.reset-context-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.reset-context-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
